@@ -1,1 +1,8 @@
 [build]
+  command = "npm run generate"
+  publish = "dist"
+  functions = "./functions"
+  functionsSource = "./functions"
+
+[dev]
+  command = "yarn dev"

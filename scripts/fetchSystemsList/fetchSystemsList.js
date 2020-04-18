@@ -1,6 +1,6 @@
 const fs = require('fs')
 const csvtojson = require('csvtojson')
-const axios = require('~/scripts/fetchSystemsList/node_modules/axios')
+const axios = require('axios')
 
 const GBFS_SYSTEMS = 'https://raw.githubusercontent.com/NABSA/gbfs/master/systems.csv'
 
@@ -19,10 +19,11 @@ async function fetchSystemsList () {
         const hasStation = !!stationInformation
 
         if (hasStation) {
-          const stationUrls = {}
-
-          languages.forEach((lang) => {
-            stationUrls[lang] = data[lang].feeds.find(f => f.name === 'station_information').url
+          const stationUrls = languages.map((language) => {
+            return {
+              language,
+              url: data[language].feeds.find(f => f.name === 'station_information').url
+            }
           })
 
           return {
@@ -39,7 +40,7 @@ async function fetchSystemsList () {
 
     const results = await Promise.all(systemsWithStations)
 
-    fs.writeFileSync('../../data/systems.json', JSON.stringify(results.filter(x => x)))
+    fs.writeFileSync('data/systems.json', JSON.stringify(results.filter(x => x)))
   } catch (err) {
     console.log(err)
   }

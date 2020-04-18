@@ -32,8 +32,10 @@
             {{ system.Location }}
           </td>
           <td class="text-right px-2">
-            Geojson
-            CSV
+            <bikeshare-links
+              :system-id="system['System ID']"
+              :station-urls="system.stationUrls"
+            />
           </td>
         </tr>
       </tbody>
@@ -43,8 +45,13 @@
 
 <script>
 import systemsArray from '~/data/systems.json'
+import BikeshareLinks from '~/components/BikeshareLinks'
 
 export default {
+  components: {
+    BikeshareLinks
+  },
+
   data () {
     return {
       systems: systemsArray,
