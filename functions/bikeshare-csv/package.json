@@ -6,6 +6,6 @@
   "license": "MIT",
   "dependencies": {
     "jsonexport": "^2.4.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   }
 }
