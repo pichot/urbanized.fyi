@@ -4,7 +4,7 @@
   "description": "bikeshare geojson download function",
   "dependencies": {
     "geojson": "^0.5.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "author": "Jonathan Pichot",
   "license": "MIT"
